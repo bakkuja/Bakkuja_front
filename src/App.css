@@ -6,14 +6,22 @@
   position: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 10px 5rem;
+  align-items: center;
+  padding: 10px 2rem;
   box-sizing: border-box;
   cursor: pointer;
   background-color: skyblue;
 }
 
-/*Home*/
-/*Section 1*/
+.AppLayout {
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Home */
+/* Section 1 */
 .Home__Section1 {
   width: 100%;
   height: 100%;
@@ -23,7 +31,7 @@
   justify-content: center;
 }
 
-/*Section 2*/
+/* Section 2 */
 .Home__Section2 {
   width: 100%;
   height: 100%;
@@ -31,4 +39,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+/* MainInfo */
+.MainInfo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.MainInfo__PostItemBtn {
+  padding-top: 50px;
 }
