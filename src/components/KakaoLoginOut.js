@@ -11,10 +11,13 @@ const KakaoLoginOut = () => {
     localStorage.removeItem('isLogged');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshTokenIndex');
+    setIsLogged((state) => false);
   };
   useEffect(() => {
-    if (localStorage.getItem('isLogged') !== null) setIsLogged((state) => true);
-  });
+    if (localStorage.getItem('isLogged') !== null) {
+      setIsLogged((state) => true);
+    }
+  }, []);
   return (
     <div>
       <Button
