@@ -1,12 +1,13 @@
 import HomeScrolls from '../components/HomeScrolls';
-import Header from '../components/Header';
+import AppLayout from '../components/AppLayout';
 
 const Home = () => {
   return (
-    <div>
-      <Header />
-      <HomeScrolls />
-    </div>
+    <AppLayout>
+      <div>
+        <HomeScrolls />
+      </div>
+    </AppLayout>
   );
 };
 
