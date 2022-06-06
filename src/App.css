@@ -1,0 +1,34 @@
+/* Header */
+.Header {
+  z-index: 10;
+  width: 100%;
+  right: 0;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: skyblue;
+}
+
+/*Home*/
+/*Section 1*/
+.Home__Section1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Section 2*/
+.Home__Section2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
