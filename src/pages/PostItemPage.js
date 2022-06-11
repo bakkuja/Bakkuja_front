@@ -1,51 +1,48 @@
 import AppLayout from '../components/AppLayout';
 import React, { Component } from 'react';
 import Button from '@mui/material/Button';
-import { request } from '../components/config/axios';
-import { format } from 'prettier';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+const PostItemPage = () => {
+  const [title, setTitle] = useState();
+  const [contents, setContents] = useState();
+  const [image, setImage] = useState();
 
-class PostItemPage extends Component {
-  state = {
-    title: '',
-    contents: '',
-    image: '',
-    previewURL: ''
+  const titleChange = (e) => {
+    setTitle((state) => e.target.value);
+    console.log(title);
   };
 
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+  const contentsChange = (e) => {
+    setContents((state) => e.target.value);
+    console.log(contents);
   };
 
-  handleFileOnChange = (e) => {
+  const handleFileOnChange = (e) => {
     e.preventDefault();
     let reader = new FileReader();
 
     let file = e.target.files[0];
 
     reader.onloadend = () => {
-      this.setState({
-        image: file,
-        previewURL: reader.result
-      });
+      setImage((state) => file);
     };
 
     reader.readAsDataURL(file);
   };
 
-  handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     //페이지 리로딩 방지
     e.preventDefault();
-    console.log(this.state.image);
+    console.log(image);
 
     const data = {
-      categorytId: 0
+      title,
+      contents
     };
 
-    const accessToken = localStorage.getItem('accessToken');
     let formData = new FormData();
-    formData.append('multipartFile', this.state.image);
+    formData.append('multipartFile', image);
     formData.append(
       'params',
       new Blob([JSON.stringify(data)], { type: 'application/json' })
@@ -69,49 +66,31 @@ class PostItemPage extends Component {
       .catch((err) => console.log(err));
   };
 
-  render() {
-    let profile_preview = null;
-    if (this.state.image !== '') {
-      profile_preview = (
-        <img className="Profile__Preview" src={this.state.previewURL} />
-      );
-    }
-    return (
-      <AppLayout>
-        <div className="PostItemPage">
-          <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-            <div>
-              제목{' '}
-              <input
-                name="title"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-              <br />
-              내용{' '}
-              <input
-                name="contents"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
-              <br />
-              <input
-                type="file"
-                accept="image/jpg,impge/png,image/jpeg,image/gif"
-                name="profileImg"
-                onChange={this.handleFileOnChange}
-              ></input>
-              <br />
-              {this.profile_preview}
-              <Button variant="outlined" type="submit">
-                게시글 등록
-              </Button>
-            </div>
-          </form>
-        </div>
-      </AppLayout>
-    );
-  }
-}
+  return (
+    <AppLayout>
+      <div className="PostItemPage">
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
+          <div>
+            제목 <input name="title" value={title} onChange={titleChange} />
+            <br />
+            내용{' '}
+            <input name="contents" value={contents} onChange={contentsChange} />
+            <br />
+            <input
+              type="file"
+              accept="image/jpg,impge/png,image/jpeg,image/gif"
+              name="profileImg"
+              onChange={handleFileOnChange}
+            ></input>
+            <br />
+            <Button variant="outlined" type="submit">
+              게시글 등록
+            </Button>
+          </div>
+        </form>
+      </div>
+    </AppLayout>
+  );
+};
 
 export default PostItemPage;
