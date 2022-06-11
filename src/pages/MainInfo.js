@@ -1,5 +1,4 @@
 import PostItem from '../components/PostItem';
-import Header from '../components/Header';
 import AppLayout from '../components/AppLayout';
 const MainInfo = () => {
   return (

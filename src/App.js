@@ -3,6 +3,7 @@ import React from 'react';
 import Home from './pages/Home';
 import MainInfo from './pages/MainInfo';
 import Auth from './pages/Auth';
+import PostItemPage from './pages/PostItemPage';
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/mainInfo" element={<MainInfo />} />
+          <Route path="/mainInfo/PostItem" element={<PostItemPage />} />
           <Route path="/oauth/kakao/callback" element={<Auth />} />
         </Routes>
       </BrowserRouter>
