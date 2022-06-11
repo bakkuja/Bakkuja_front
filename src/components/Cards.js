@@ -1,10 +1,8 @@
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import { useEffect, useState } from 'react';
-import { minHeight } from '@mui/system';
-export default function Cards({ title, postDate, thumbnail }) {
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+export default function Cards({ title, postDate, thumbnail, postId }) {
+  const navigate = useNavigate();
   const [postDateStr, setPostDateStr] = useState(
     (postDate + '').substring(0, 10)
   );
@@ -14,7 +12,11 @@ export default function Cards({ title, postDate, thumbnail }) {
 
   return (
     <div className="Card">
-      <Card className="Card__All" sx={{ minWidth: 800, minHeight: 100 }}>
+      <Card
+        className="Card__All"
+        sx={{ minWidth: 800, minHeight: 100 }}
+        onClick={() => navigate(`/boards/detail/${postId}`)}
+      >
         <div className="Card__ImgBox">
           <img className="Card__Img" src={thumbnail} />
         </div>

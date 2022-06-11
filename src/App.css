@@ -89,3 +89,50 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Detail */
+.Detail {
+  padding-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+.Detail__Card {
+  display: flex;
+  justify-content: center;
+}
+
+.Detail__ImgBox {
+  width: 500px;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.Detail__Img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Detail__Contents {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Detail__Title {
+  padding-bottom: 2%;
+  font-size: 4vmin;
+}
+
+.Detail__Date {
+}
+
+.Detail__Location {
+  padding-bottom: 4%;
+}
+
+.Detail__Content {
+}
