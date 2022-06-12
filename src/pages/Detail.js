@@ -3,8 +3,11 @@ import Card from '@mui/material/Card';
 import { useEffect, useState } from 'react';
 import { request } from '../components/config/axios';
 import { useParams } from 'react-router-dom';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Detail = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState();
   const { postId } = useParams();
 
@@ -41,6 +44,15 @@ const Detail = () => {
               {data && data.post.userLocation}
             </div>
             <div className="Detail__Content">{data && data.post.content}</div>
+          </div>
+          <div>
+            <Button
+              onClick={() => {
+                navigate('/msg');
+              }}
+            >
+              메시지
+            </Button>
           </div>
         </Card>
       </div>
