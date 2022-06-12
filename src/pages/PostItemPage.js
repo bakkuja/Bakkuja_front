@@ -5,19 +5,21 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 const PostItemPage = () => {
   const [title, setTitle] = useState();
-  const [contents, setContents] = useState();
+  const [content, setContent] = useState();
   const [image, setImage] = useState();
+  const [userLocation, setUserLocation] = useState();
 
   const titleChange = (e) => {
     setTitle((state) => e.target.value);
-    console.log(title);
   };
 
   const contentsChange = (e) => {
-    setContents((state) => e.target.value);
-    console.log(contents);
+    setContent((state) => e.target.value);
   };
 
+  const userLocationChange = (e) => {
+    setUserLocation((state) => e.target.value);
+  };
   const handleFileOnChange = (e) => {
     e.preventDefault();
     let reader = new FileReader();
@@ -38,7 +40,8 @@ const PostItemPage = () => {
 
     const data = {
       title,
-      contents
+      content,
+      userLocation
     };
 
     let formData = new FormData();
@@ -73,8 +76,17 @@ const PostItemPage = () => {
           <div>
             제목 <input name="title" value={title} onChange={titleChange} />
             <br />
+            위치{' '}
+            <input
+              type="text"
+              name="userLocation"
+              value={userLocation}
+              placeholder={'서울시 성북구 길음동'}
+              onChange={userLocationChange}
+            />
+            <br />
             내용{' '}
-            <input name="contents" value={contents} onChange={contentsChange} />
+            <input name="contents" value={content} onChange={contentsChange} />
             <br />
             <input
               type="file"
